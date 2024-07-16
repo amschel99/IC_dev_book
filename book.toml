@@ -1,0 +1,16 @@
+[book]
+authors = ["amschel99"]
+language = "en"
+multilingual = false
+src = "src"
+title = "IC DEV BOOK"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
