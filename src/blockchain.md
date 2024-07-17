@@ -32,8 +32,11 @@ The output will always be ,
 
 All hash functions should exhibit this trait. It is the idea that changing 1 bit in the input of the hash function should change about half the output bits. This is the trait that ensures immutability of blockchain systems. Let's see how.
 
-```mermaid
+Each block contains a hash, which is generated based on the block's contents: the previous block's hash, the current block's message (data), and the timestamp. If any of these components are altered, the hash of the block changes, which in turn affects the hashes of all subsequent blocks.
 
+To illustrate this, consider the following blockchain:
+
+```mermaid
 graph TB
     subgraph Block0
         A0[Hash: 0000...0000]
@@ -57,7 +60,21 @@ graph TB
 
     Block0 -->|Previous Hash: 0000...0000| Block1
     Block1 -->|Previous Hash: 5feceb...8a3fb| Block2
-
-
-
 ```
+
+## Explanation
+
+If we change any part of Block1 (such as the message or timestamp), the hash of Block1 will change. Consequently, since Block2's hash is partly based on Block1's hash, the hash of Block2 will also change. This chain reaction ensures that any modification to a single block invalidates all subsequent blocks, making the blockchain immutable.
+
+### Useful Features of a Blockchain
+
+To recap, a blockchain is an immutable distributed ledger. It is distributed in the sense that information doesn't reside on a single server, thereby solving the problem of a single point of failure. It is immutable because changing a single piece of information would alter the entire chain.
+
+The most useful features of a blockchain are:
+
+1. **Distributed**: Information is shared across a network of nodes, reducing the risk of a single point of failure.
+2. **Immutable**: Once data is recorded, it cannot be altered without affecting the entire chain, ensuring data integrity and security.
+3. **Decentralized**: Control is distributed across a network rather than being centralized in a single entity, promoting transparency and trust.
+4. **Secure**: Cryptographic algorithms protect the data, making it difficult for unauthorized parties to alter the information.
+
+
